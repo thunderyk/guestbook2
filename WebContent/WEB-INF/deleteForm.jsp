@@ -2,8 +2,7 @@
 <%@ page import ="com.javaex.vo.GuestBookVo" %>
 
 <%
-	GuestBookVo guestBookVo = new GuestBookVo();
-	guestBookVo = (GuestBookVo)request.getAttribute("guestBookVo");
+	GuestBookVo guestBookVo = (GuestBookVo)request.getAttribute("guestBookVo");
 %>
 <!DOCTYPE html>
 <html>
