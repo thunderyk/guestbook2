@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,10 +47,20 @@ public class GuestController extends HttpServlet {
 		}
 		
 		if(action.equals("addList")) {
-			RequestDispatcher rd = request.getRequestDispatcher("./addList.jsp");
+			GuestBookDao guestBookDao = new GuestBookDao();
+			List<GuestBookVo>guestBookList = guestBookDao.getGuestBookList();
+			request.setAttribute("guestBookList", guestBookList);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("./WEB-INF/addList.jsp");
 			rd.forward(request, response);
 		}else if(action.equals("deleteForm")) {
-			RequestDispatcher rd = request.getRequestDispatcher("./deleteForm.jsp");
+			
+			int deleteNum = Integer.parseInt(request.getParameter("no"));
+			GuestBookDao guestBookDao = new GuestBookDao();
+			GuestBookVo guestBookVo = guestBookDao.getGuestBook(deleteNum);
+			
+			request.setAttribute("guestBookVo", guestBookVo);
+			RequestDispatcher rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
 			rd.forward(request, response);
 		}else if(action.equals("delete")) {
 			

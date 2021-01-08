@@ -4,8 +4,7 @@
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%@ page import = "java.util.List" %>
 <%
-	GuestBookDao guestBookDao = new GuestBookDao();
-	List<GuestBookVo>guestBookList = guestBookDao.getGuestBookList();
+	List<GuestBookVo>guestBookList = (List<GuestBookVo>)request.getAttribute("guestBookList");
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 %>
