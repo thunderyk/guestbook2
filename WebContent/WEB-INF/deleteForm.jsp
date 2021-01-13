@@ -2,7 +2,7 @@
 <%@ page import ="com.javaex.vo.GuestBookVo" %>
 
 <%
-	GuestBookVo guestBookVo = (GuestBookVo)request.getAttribute("guestBookVo");
+	int deleteNum = Integer.parseInt(request.getParameter("no"));
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
 		<div>
 			<label>비밀번호</label>
 			<input type="password" name="password">
-			<input type="hidden" name="no" value=<%=guestBookVo.getNo()%>>
+			<input type="hidden" name="no" value=<%=deleteNum%>>
 			<input type="hidden" name="action" value="delete">
 			<button type="submit">확인</button>
 		</div>

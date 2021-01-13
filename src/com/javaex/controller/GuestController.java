@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.dao.GuestBookDao;
+import com.javaex.util.WebUtil;
 import com.javaex.vo.GuestBookVo;
 
 import javax.servlet.RequestDispatcher;
@@ -55,13 +56,7 @@ public class GuestController extends HttpServlet {
 			rd.forward(request, response);
 		}else if(action.equals("deleteForm")) {
 			
-			int deleteNum = Integer.parseInt(request.getParameter("no"));
-			GuestBookDao guestBookDao = new GuestBookDao();
-			GuestBookVo guestBookVo = guestBookDao.getGuestBook(deleteNum);
-			
-			request.setAttribute("guestBookVo", guestBookVo);
-			RequestDispatcher rd = request.getRequestDispatcher("./WEB-INF/deleteForm.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "./WEB-INF/deleteForm.jsp");
 		}else if(action.equals("delete")) {
 			
 			String password = request.getParameter("password");
